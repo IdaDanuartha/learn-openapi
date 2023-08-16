@@ -72,7 +72,64 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Example success get all todo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "priority": {
+                        "type": "number",
+                        "format": "int32"
+                      },
+                      "tags": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "description": "Example success get all todo",
+                    "value": [
+                      {
+                        "id": 1,
+                        "name": "Java",
+                        "priority": 3,
+                        "tags": [
+                          "Java",
+                          "Programming"
+                        ]
+                      },
+                      {
+                        "id": 2,
+                        "name": "PHP",
+                        "priority": 5,
+                        "tags": [
+                          "PHP",
+                          "Programming"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
       },
       "post": {
         "summary": "Create new TodoList",
@@ -103,11 +160,78 @@
                     }
                   }
                 }
+              },
+              "examples": {
+                "java": {
+                  "description": "Example create todolist Java",
+                  "value": {
+                    "name": "Java",
+                    "priority": 2,
+                    "tags": [
+                      "Java",
+                      "Programming"
+                    ]
+                  }
+                },
+                "php": {
+                  "description": "Example create todolist PHP",
+                  "value": {
+                    "name": "PHP",
+                    "priority": 2,
+                    "tags": [
+                      "PHP",
+                      "Programming"
+                    ]
+                  }
+                }
               }
             }
           }
         },
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Example success create new todo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "priority": {
+                        "type": "number",
+                        "format": "int32"
+                      },
+                      "tags": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                },
+                "examples": {
+                  "success": {
+                    "description": "Example success create new todo",
+                    "value": {
+                      "id": 1,
+                      "name": "Java",
+                      "priority": 3,
+                      "tags": [
+                        "Java",
+                        "Programming"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/todo/{todoId}": {
@@ -124,6 +248,16 @@
               "type": "string",
               "minLength": 1,
               "maxLength": 100
+            },
+            "examples": {
+              "java": {
+                "description": "Sample todoId Java",
+                "value": 1
+              },
+              "php": {
+                "description": "Sample todoId PHP",
+                "value": 2
+              }
             }
           }
         ],
@@ -153,11 +287,78 @@
                     }
                   }
                 }
+              },
+              "examples": {
+                "java": {
+                  "description": "Example update todolist Java",
+                  "value": {
+                    "name": "Java",
+                    "priority": 2,
+                    "tags": [
+                      "Java",
+                      "Programming"
+                    ]
+                  }
+                },
+                "php": {
+                  "description": "Example update todolist PHP",
+                  "value": {
+                    "name": "PHP",
+                    "priority": 2,
+                    "tags": [
+                      "PHP",
+                      "Programming"
+                    ]
+                  }
+                }
               }
             }
           }
         },
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Example success update existing todo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "priority": {
+                        "type": "number",
+                        "format": "int32"
+                      },
+                      "tags": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                },
+                "examples": {
+                  "success": {
+                    "description": "Example success update existing todo",
+                    "value": {
+                      "id": 1,
+                      "name": "Java",
+                      "priority": 3,
+                      "tags": [
+                        "Java",
+                        "Programming"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       },
       "delete": {
         "summary": "Delete existing TodoList",
@@ -175,7 +376,54 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Example success delete existing todo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "boolean"
+                      }
+                    }
+                },
+                "examples": {
+                  "success": {
+                    "description": "Example success delete existing todo",
+                    "value": {
+                      "status": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed delete not found todo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "boolean"
+                      }
+                    }
+                },
+                "examples": {
+                  "error": {
+                    "description": "Failed delete existing todo",
+                    "value": {
+                      "success": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
