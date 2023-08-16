@@ -79,28 +79,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "priority": {
-                        "type": "number",
-                        "format": "int32"
-                      },
-                      "tags": {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/ArrayTodoList"
                 },
                 "examples": {
                   "success": {
@@ -196,25 +175,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "priority": {
-                        "type": "number",
-                        "format": "int32"
-                      },
-                      "tags": {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
-                      }
-                    }
+                  "$ref": "#/components/schemas/CreateOrUpdateTodoList"
                 },
                 "examples": {
                   "success": {
@@ -243,25 +204,7 @@
         "description": "Update existing todolist in database",
         "parameters": [
           {
-            "name": "todoId",
-            "in": "path",
-            "required": true,
-            "description": "Todolist id for updated",
-            "schema": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 100
-            },
-            "examples": {
-              "java": {
-                "description": "Sample todoId Java",
-                "value": 1
-              },
-              "php": {
-                "description": "Sample todoId PHP",
-                "value": 2
-              }
-            }
+            "$ref": "#/components/parameters/TodoListId"
           }
         ],
         "requestBody": {
@@ -324,25 +267,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "priority": {
-                        "type": "number",
-                        "format": "int32"
-                      },
-                      "tags": {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
-                      }
-                    }
+                  "$ref": "#/components/schemas/TodoList"
                 },
                 "examples": {
                   "success": {
@@ -369,15 +294,7 @@
         "description": "Delete existing todolist in database",
         "parameters": [
           {
-            "name": "todoId",
-            "in": "path",
-            "required": true,
-            "description": "Todolist id for deleted",
-            "schema": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 100
-            }
+            "$ref": "#/components/parameters/TodoListId"
           }
         ],
         "responses": {
@@ -397,7 +314,7 @@
                   "success": {
                     "description": "Example success delete existing todo",
                     "value": {
-                      "status": true
+                      "success": true
                     }
                   }
                 }
@@ -441,7 +358,7 @@
         "name": "todoId",
         "in": "path",
         "required": true,
-        "description": "Todolist id for updated",
+        "description": "Todolist id",
         "schema": {
           "type": "string",
           "minLength": 1,
@@ -504,27 +421,9 @@
       "ArrayTodoList": {
         "type": "array",
         "items": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "priority": {
-              "type": "number",
-              "format": "int32"
-            },
-            "tags": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          }
+          "$ref": "#/components/schemas/TodoList"
         }
-      },
+      }
     }
   }
 }
