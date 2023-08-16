@@ -35,6 +35,11 @@
   "paths": {
     "/todo": {
       "get": {
+        "security": [
+          {
+            "TodoListAuth": []
+          }
+        ],
         "tags": ["TodoList"],
         "summary": "Get All TodoList",
         "description": "Get all active todolist by default",
@@ -112,6 +117,11 @@
         }
       },
       "post": {
+        "security": [
+          {
+            "TodoListAuth": []
+          }
+        ],
         "tags": ["TodoList"],
         "summary": "Create new TodoList",
         "description": "Create new todolist to database",
@@ -199,6 +209,11 @@
     },
     "/todo/{todoId}": {
       "patch": {
+        "security": [
+          {
+            "TodoListAuth": []
+          }
+        ],
         "tags": ["TodoList"],
         "summary": "Update existing todolist",
         "description": "Update existing todolist in database",
@@ -289,6 +304,11 @@
         }
       },
       "delete": {
+        "security": [
+          {
+            "TodoListAuth": []
+          }
+        ],
         "tags": ["TodoList"],
         "summary": "Delete existing TodoList",
         "description": "Delete existing todolist in database",
@@ -353,6 +373,14 @@
     "url": "https://www.google.com"
   },
   "components": {
+    "securitySchemes": {
+      "TodoListAuth": {
+        "description": "Authentication for TodoList RESTful API",
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      }
+    },
     "parameters": {
       "TodoListId": {
         "name": "todoId",
